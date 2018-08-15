@@ -1,0 +1,9 @@
+.App {
+	text-align: center;
+	top:0;
+	left:0;
+	position:fixed;
+	width: 100vw;
+	height: 100vh;
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}

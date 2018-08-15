@@ -1,0 +1,40 @@
+.button{
+    background-color: #555555;
+        border: none;
+        color: white;
+        padding: 5px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        top: 15%;
+        position:relative;
+        cursor: pointer;
+        /*---------------SELECTION DISABLE---------------*/
+        -webkit-touch-callout: none;
+        -webkit-user-select: none; 
+        -khtml-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none;
+        user-select: none; 
+        }
+.button:active{
+    background-color: #000000;
+        border: none;
+        color: red;
+        padding: 5px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        top: 15%;
+        position:relative;
+        cursor: pointer;
+        /*---------------SELECTION DISABLE---------------*/
+        -webkit-touch-callout: none;
+        -webkit-user-select: none; 
+        -khtml-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none;
+        user-select: none; 
+}
