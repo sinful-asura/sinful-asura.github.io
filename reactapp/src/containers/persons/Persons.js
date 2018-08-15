@@ -1,45 +1,26 @@
-import React, { Component} from 'react';
-import users from '../../data/users';
+import React from 'react';
 import Person from '../../components/Person/Person';
 
-class Persons extends Component{
-	constructor(props){
-		super();
-		this.state = {
-			users: users,
-			changeActive: props.changeActive,
-			changeId: props.changeId
-		}
-		 this.onRemove = (id) => {
-			const newUsers = this.state.users.filter(user => user.id !== id);
-			this.setState({users: newUsers});
-		}
-	}
+const Persons = (props) =>{
+	const users = props.userData;
 
-
-componentWillReceiveProps(nextProps){
-	this.setState(Object.assign(this.state, {changeActive: nextProps.changeActive, changeId: nextProps.changeId}));
-}
-render(){
 	return(
 		<div className="Persons">
 			{
-				this.state.users.map((user, key) => {
+				users.map((user, key) => {
 					return (
-						<Person 
-							key={key} 
-							id={user.id} 
-							name={user.name} 
-							onRemove={this.onRemove} 
-							changeActive={this.state.changeActive} 
-							changeId={this.props.changeId}
-						/>
+					  <Person
+					  	 key={key}
+						 userData={user} 
+         				 eventData={props.eventData}
+         				 changeActive={props.changeActive}
+         				 cardCount={props.cardCount}
+         			  />
 					);
 				})
 			}
 		</div>
 	);
-  }
 }
 
 export default Persons;
