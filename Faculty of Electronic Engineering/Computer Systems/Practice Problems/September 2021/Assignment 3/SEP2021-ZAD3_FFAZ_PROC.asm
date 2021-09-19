@@ -17,7 +17,7 @@ STACK ENDS
 CODE SEGMENT  
     assume CS: CODE, DS: DATA, SS: STACK 
 _START:            
-    MOV AX, DATAI
+    MOV AX, DATA
     MOV DS, AX
     XOR AX,AX 
    
