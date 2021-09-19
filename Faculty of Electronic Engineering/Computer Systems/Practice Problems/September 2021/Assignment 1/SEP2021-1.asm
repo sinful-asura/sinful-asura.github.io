@@ -1,91 +1,108 @@
-; Napisati program na asemblerskom jeziku koji izracunava vrednost izraza:
-; ([9 - (3*2)] + [25 - (5*4)] + [49 - (7*6)] + ... + [n^2 - (n * (n-1))])/(-n + 1)
-; gde je n 16-bitni neparan broj dat na lokaciji N, a vrednost brojioca najvise 32-bitni podatak.
-; Kolicnik smestiti na lokaciju KOL, a ostatak na lokaciju OST. Dati primer ulaznog podatka i
-; ocekivane vrednosti medjurezultata i konacnog rezultata. 
+; Design a program using assembly 8086 language which evaluates, without transforming, the following expression: 
 ;
-; Napomena: Nije dozvoljeno koristiti nizove
-
-PODACI SEGMENT
-    N DW 5             ;Broj ponavljanja N  
+; ([9 - (3*2)] + [25 - (5*4)] + [49 - (7*6)] + ... + [n^2 - (n * (n-1))])/(-n + 1)
+; 
+; n is a 16bit odd number in memory location N, while numerator is at most a 32bit value.
+; Store the quotient at location QOT and the remainder at location REM.
+; Give an example of input value, intermediate results and expected value.
+;
+; Note: Usage of strings (arrays) is not permited.
+ 
+ 
+ 
+ 
+DATA SEGMENT
+    N DW 5             ; Iteration count  
     SUM DD 0 
-    KOL DW 2 dup(0)
-    OST DW 2 dup(0)
-PODACI ENDS
-KOD SEGMENT  
-    assume CS: kod, DS: podaci 
+    QOT DW 2 dup(0)
+    REM DW 2 dup(0)
+DATA ENDS
+CODE SEGMENT  
+    assume CS: CODE, DS: DATA 
 START: 
        
-    ; Ucitavamo DS             
-    MOV AX, PODACI
+    ; Load DS value             
+    MOV AX, DATA
     MOV DS, AX
-    
-    XOR AX,AX ;resetujemo AX za dalje koriscenje 
-    MOV CX, 3  ; Pocinjemo od n = 3
-    
-  PETLJA:  
-    XOR BX, BX          ; Resetujemo BX
+        
+        
+    XOR AX,AX  ; Reset AX 
+    MOV CX, 3  ; Starting with n = 3
+       
+       
+  _LOOP:  
+    XOR BX, BX         ; Reset BX
     MOV BX, N
-    CMP CX, BX         ; Postavlja flagove za ispitivanje uslova skoka
-    JG END             ; Ako je n > N, skace na END
+    CMP CX, BX         ; Set flags for conditional check
+    JG _END             ; If n > N, jump to _END
     
-    ;Ako je n <= N nastavlja izvrsvanje
+    
     MOV BX, CX         ; BX = n
-    
     MOV DX, BX         ; DX = n
     DEC DX             ; DX = (n - 1)
-    
+       
+       
     MOV AX, BX         ; AX = n
     MUL DX             ; AX = n * (n - 1)
-    
+        
+        
     MOV BX, AX         ; BX = n * (n - 1)
     MOV AX, CX         ; AX = n
     MUL AX             ; AX = n * n  
     SUB AX, BX         ; AX = n^2 - (n * (n - 1))
+
     
-    MOV BX, AX         ; Smestamo vrednost AX u BX kako bi resetovali AX
-    
-    MOV AX, SUM        ; Nizi bajt SUM
-    MOV DX, SUM + 2    ; Visi bajt SUM
-    
+    MOV AX, SUM        ; SUM_LOW
+    MOV DX, SUM + 2    ; SUM_HIGH
+        
+        
     ADD AX, BX         ; SUM += (n^2 - (n * (n - 1))
-    ADC DX, 0          ; Prenos ide u DX
+    ADC DX, 0          ; If there was a carry, we add it to higher word
+       
           
-    ; Suma se cuva u memoriju      
+    ; Store SUM to memory      
     MOV SUM, AX
     MOV SUM+2, DX      
-    
+       
+       
     ADD CX, 2          ; n += 2
-    
-    JMP PETLJA          ; While petlja
-    
-    END:
-    ; Delimo sumu sa -n + 1 i premestamo kolicnik i rezultat u odgovarajuce memorijske lokacije
-            
-    ; Resetovanje registara
+       
+       
+    JMP _LOOP          ; Assembly while loop
+       
+       
+    _END: 
+    ; Reset registers
     XOR AX, AX
     XOR BX, BX
     XOR CX, CX
     XOR DX, DX
-    
+        
+        
     MOV AX, N          ; AX = n
     MOV CX, -1
     MUL CX             ; AX = -n
     INC AX             ; AX = -n + 1
-    
+         
+         
     MOV BX, AX         ; BX = -n + 1
-    
-    ; Suma u CX:AX
+         
+         
+    ; Sum is in DX
     MOV AX, SUM
     MOV DX, SUM + 2
-    
+          
+          
     IDIV BX
     
-    MOV OST, DX
-    MOV KOL, AX
-    
+          
+    MOV QOT, AX      
+    MOV REM, DX
+           
+           
     MOV AH, 4CH
     INT 21H       
+       
            
-KOD ENDS
+CODE ENDS
 END START

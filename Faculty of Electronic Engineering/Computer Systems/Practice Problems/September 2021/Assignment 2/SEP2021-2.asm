@@ -1,74 +1,89 @@
-; Napisati9 program na asemblerskom jeziku koji odredjuje koliko reci iz recenice smestene od adrese TXT,
-; sadrzi tacno tri slova "A", velika ili mala. Smatrati da su u recenici sve reci razdvojene jednim blanko znakom
-; i da se recenica zavrsava tackom. Sve pirstupe memoriji realizovati instrukcijama za rad sa nizovima.     
+; Design an assembly 8086 program which determines the count of words in a sentence beginning at memory address TXT,
+; that contain exactly 3 letters 'a', either capital or not ('a' or 'A'). Consider the words in the sentence to be
+; separated by a single blank character and that the sentence ends with a '.' character.
+; Memory access is to be realized using string manipulation instructions exclusively!
 ;
-; Dati primer ulaznih podataka i ocekivanu vrednost rezultata.
-
-
-PODACI SEGMENT
-    RECENICA db 'Anal kanaa Velik KanAal PenAAal KAaAaAaMen. aaa'     ; Primer recenice  
-    TXT db 0        ; Pocetak recenice (ide do '.') 
-PODACI ENDS
-KOD SEGMENT  
-    assume CS: kod, DS: podaci, ES: podaci
-START:
+; Provide an example of input data and expected output.
+DATA SEGMENT
+    SENTENCE db 'Anal kanaa Velik KanAal PenAAal KAaAaAaMen. aaa'     ; Sentence Example  
+    TXT db 0        ; Start of the sentence (the sentence must be terminated by a '.' character!) 
+DATA ENDS
+CODE SEGMENT  
+    assume CS: CODE, DS: DATA, ES: DATA
+_START:
             
-    MOV AX, PODACI
+    MOV AX, DATA
     MOV DS, AX
     MOV ES, AX
     XOR AX,AX 
             
-    ; DS:SI - Izvorisni string
-    ; ES:DI - Odredisni string      
+    ; DS:SI - Source String
+    ; ES:DI - Destination String      
     
     
     CLD     ; Direction flag = 0 -> Left to Right
-    LEA SI, RECENICA
-    XOR BL, BL  ; BL = BROJ RECI U RECENICI SA TACNO 3 SLOVA 'a' ILI 'A'
+    LEA SI, SENTENCE
+    XOR BL, BL  ; BL <- Number of words in a sentence containing exactly three characters 'a' or 'A'
     
-    RESET:
-    XOR AH, AH ; AH = BROJ SLOVA 'a' ili 'A'
-    LOAD_NEXT:        
-    LODSB   ; AL = TRENUTNI KARAKTER
+   _RESET:
+    XOR AH, AH ; AH <- Current count of 'a' or 'A' characters
+   _LOAD_NEXT:        
+    LODSB   ; AL <- Current Character
          
     
     CMP AL, '.'
-    JE END_OF_PROGRAM
+    JE _END_OF_PROGRAM
     
     CMP AL, ' '
-    JE IS_BLANK
+    JE _IS_BLANK
     
     CMP AL, 'A'
-    JE INC_COUNT
+    JE _INC_COUNT
     
     CMP AL, 'a'
-    JE INC_COUNT   
-    JMP LOAD_NEXT
+    JE _INC_COUNT   
+    JMP _LOAD_NEXT
     
     
-    INC_COUNT:
+   _INC_COUNT:
     INC AH
-    JMP LOAD_NEXT
+    JMP _LOAD_NEXT
     
-    IS_BLANK:
+   _IS_BLANK:
     CMP AH, 3
-    JE REZ_INC
-    JMP RESET
+    JE _RES_INC
+    JMP _RESET
     
-    REZ_INC:
+   _RES_INC:
     INC BL
-    JMP RESET
+    JMP _RESET
     
     
     
-    END_OF_PROGRAM:
+   _END_OF_PROGRAM:
+    ; If the last word in the sentence satisfies the condition, it will fail to be registered
+    ; since checks are only done on blank characters, which is why we need to do another check
     CMP AH, 3
-    JNE SKIP
-    INC BL  ; Kada je tacka na samom kraju, nece se registrovati da zadnja rec ima tacno 3 slova zbog uslova ispitivanja da je BR == 3 kod ' ' znaka
-    SKIP:
-            
+    JNE _SKIP 
+    INC BL
+    
+      
+   _SKIP:        
     MOV AH, 4CH
     INT 21H       
            
-KOD ENDS
-END START
+CODE ENDS
+END _START
+
+; Example:
+; /----------------------------------------------------------------------------------------\
+;| Sentence: 'Anal kanaa Velik KanAal PenAAal KAaAaAaMen. aaa'                              |
+;|                                                                                          |
+;| TXT Value: 0                                                                             |
+;|                                                                                          |
+;| (Note: Sentence has to be defined first in order for it to begin from its very start,    |
+;| as sentence will be written from memory address 0 up to its length. If something else    |
+;| is defined before the sentence, the program will work, but the result may be misleading).|
+;|                                                                                          |
+;| Expected output (value stored in register):  3                                           |
+; \----------------------------------------------------------------------------------------/

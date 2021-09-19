@@ -1,20 +1,23 @@
-; Napisati proceduru na asemblerskom jeziku koja vraca element iza prvog elementa vrednosti 0 u nizu 16-bitnih neoznacenih brojeva.
-; Ukoliko u nizu nema nula ili se prva nula nalazi na poslednjem mestu, procedura treba da vrati FFFh.
-; Adresa niza i broj elemenata su ulazni parametri procedure. Sve parametre preneti preko steka.
+; Design an assembly 8086 procedure which finds and returns the immediate neighbour of the first 0-value
+; element in a 16bit string of unsigned numbers.
+;
+; If there are no zeroes in a string, or if the first zero is at the last position in the string, return FFFh.
+; String address and number of elements represent the input parameters of the procedure. 
+; Parameters should be trasnferred via stack.
 
 name FIND_FIRST_AFTER_ZERO
-PODACI SEGMENT
+DATA SEGMENT
 
 
-PODACI ENDS
+DATA ENDS
 STACK SEGMENT
     
     
 STACK ENDS
-KOD SEGMENT  
-    assume CS: KOD, DS: PODACI, SS: STACK 
-START:            
-    MOV AX, PODACI
+CODE SEGMENT  
+    assume CS: CODE, DS: DATA, SS: STACK 
+_START:            
+    MOV AX, DATAI
     MOV DS, AX
     XOR AX,AX 
    
@@ -22,5 +25,5 @@ START:
     MOV AH, 4CH
     INT 21H
              
-KOD ENDS
-END START
+CODE ENDS
+END _START
