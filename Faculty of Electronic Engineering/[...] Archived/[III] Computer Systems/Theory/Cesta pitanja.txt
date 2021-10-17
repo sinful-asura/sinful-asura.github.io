@@ -1,0 +1,120 @@
+1] Nacrtaj i objasni format naredbe uslovnog skoka kod hipotetickog racunara. Prikazi i skraceni format i navedi mogucu duzinu skoka u bajtovima kod skracenog formata.
+
+2] Prikazati i objasniti adresiranje sa razmestajem.
+
+3] Nacrtati detaljnu jedinstvenu semu koja prikazuje kako je U-I interfejs "povezan-oslonjen" na sistemsk umagistralu. Za blokove Spoljni drajveri i prijemnici, Logika za handshake i Adresni dekoder objasniti koja im je funkcija i kako se implementiraju.
+
+4] Nacrtati semu mikroprocesorskog sistema kod koga su na 32b adresnu magistralu povezani memorijski podsistem i U-I podsistem tako da se ne koriste posebne instrukcije kod u-I operacija. U-I podsistem treba da zauzme memorijski prostor pocev od lokacije C0000000H do FFFFFFFFH
+
+5] U okviru ciklusa naredbe prikazati kada je moguce suspendovati rad procesora da bi se obavio DMA prenos i objasniti tipove DMA prenosa.
+
+6] Napisati program za izracunavanje izraza Y=(D+E)/(B-A*C) u pseudo kodu koriscenjem:
+    a) naredbi sa troadresnim formatom,
+    b) naredbi sa dvoadresnim formatom,
+    c) naredbi sa jednoadresnim formatom.
+Uz svaku naredbu u programu obavezno navesti i komentar.
+Diskutovati potreban broj instrukcija, duzin uinstrukcija i pogodnosti u programiranju.
+
+7] Objasniti signale INTR i INTRA. Kada se generisu i koji uredjaji ih generisu? Nacrtati semu i objasniti maskiranje prekida.
+
+8] Prikazati povezivanje U-I podsistema na racunarski sistem sa 16bit adresnom magistarlom. Sistem ne sme da ima posebne u-i iunstrkcije, a U-I adrese treba da zauzmu poslednju osminu jedinstvenog adresnog prostora.
+
+9] Na sistem sa 32bit adresnom magistralom povezati 6 cipova RAM-a kapaciteta 8Kx8b., Koristiti lineaerni izbor cipa. Za svaki prikljuceni memorijski modul napisati u kom je memorijsskom podrucju smesten. Koji je maksimalan broj ovakvih modula koji se moze prikljuiti na 32b magistralu uz koriscenje linearnog izbora cipa?
+
+10] Prikazati i objasniti resenje bazirano na semi sa lancanjem kod jednoprocesorskog sistema gde postoji veci broj izvora prekida.
+
+11] Nacrtati dijagram toka aktivonsti kod ptihvatanja zahteva za prekid. Na dijagramu oznaciti tacke u kojima treba dopustiti i zabarniti daklji prekid kako bi bio moguc prekid po dubini.
+
+12] Nacrtaj dijagram toka aktivnosti procesora kod izvrsenja jedne naredbe.
+
+13]
+  a) Nacrtaj tipican dvoadresni format naredbe.
+  b) Specificirati svako polje za slucaj naredbe tipa reg u mem 
+  c) Specificirati svako polje za slucaj naredbe tipa mem u reg 
+
+14]
+A - Nacrtati semu i objasniti U-I preslikan na mem kada je mikrporocesor povezan na sistemsku magistralu koija ima 32b adresnu mag. Povezati memorij ui U-I podsistem tako da U-I podsistem zauzme tacno sesnaestinu adresnog prostora. Za dekodiranje adresnih prostora na raspolaganj su viseulazna I kola i viseulazna NI kola.
+Navesti granice memorijskog podrucja koje je rezervisano za U-I podsistem.
+B- Nacrtati semu i objasniti izdvojeni U-I kada je mikroprocesor povezan na sistemsku magistralu koja ima 32-bitnu adresnu magistralu., Povezati memoriju i U-I podsistem tako da je broj izdvojenih adresa za U-I podsistem tancno 4096.
+
+15] Objasniti realizacij uDMA kontrolera sa direktnim i indirektni mpreonsom. Nacrtati i komentaristi tri razlicite konfiguracije za organizaciju DMA porenosa od cega su sdve sa jedinstvenom magistralom a jedan sa posebnom U-I magistralom.
+
+16] Iz tipicnog dvoadresnog formata naredbe izvesti naredbu tipa mem u reg i specificirati sta se navodu u svakom od polja naredbe tog tipa.
+
+17] U okviru ciklusa naredbe pirkazati kada je moguce suspendovati rad procesora da bi se obavio DMA prenos i objasniti tipove DMA prenosa.
+
+18] Nacrtati dijagram stanja za tok izvrsenja naredbe. Sva stanja oznaciti brojevima. Za nizovnu instrukciju koja obavlja sabiranje vektora sa 5 elemenata zabeleziti redosled stanja kroz koja se prolazi da bi se izvrsila instrukcija.
+
+19] Objasniti ulazni i izlazni razdvojni stepen na primeru instrukcija IN i OUT kod hipotetickog racunara.
+
+20] Objasniti organizaciju procesne jedinice oko jedne, dve i tri magistarle.
+
+21] Objasniti tipican dvoadresni format. Sta je to simetricna naredba? Za svaki slucaj kod simetricne naredbe navesti duzinu naredbe u recima.
+
+22] Nacrtati seme i objasniti postindeksiranje i preindeksiranje.
+
+23] DIjagram toka aktivnosti kod prihvatanja zahteva za prekid.
+
+24] Nacrtati semu i objasni izdvojeni U-I.
+
+25] Nacrtati tipican dvoadresni format naredbe.
+a) Specificirati svako polje za slucaj naredbe tipa reg u mem
+b) Specificirati svako polje za slucaj naredbe tipa mem u reg 
+
+26] Nacrtati semu i objasniti U-I preslikan na mem kada je mikroprocesor povezan na sistemsku magistralu koja ima 32bit adresnu mag. Povezati emoriju i U-I podsistem tako da U-I podsistem zauzme tacno sesnaestinu adresnog prostora. Za dekodiranje adresnih prostora na raspolaganju su viseulazna I kola i viseulazna NI kola. Navesti granice memorijskog podrucja koje je rezervisano za U-I podsistem.
+b) Nacrtati semu i objasniti izdvojen U-I kada je mikrporocesor povezan na sistemsku magistralu koja ima 32-bit adresnu mag. Povezati memoriju i U-I podsistem tako da je broj izdvojenih adresa za U-I podistem tacno 4096.
+
+27] Objasniti realizaciju DMA kontrolera sa direktni i indirektnim prenosom. Nacrtati i komentarisati tri razlicite konfig za organizaciju DMA prenosa od cega su dve sa jedinstvenom magistralom, a jedna sa posebnom U-I magistralom.
+
+28] Objasniti razloge za uvodjenje stanja cekanja, nacrtati dijagram koji sadrzi stanje cekanja i objasniti fun.
+IN 1
+MOV B, A
+IN 1 
+AND A, B 
+NOT A 
+XOR A, B 
+OUT 2 
+Navesti kroz koliko stanja prodje hipoteticki procesor i izracunati u opstem matematickom obliku trajanje izvrsenja programa, a kao osnovnu jedinicu koristiti broj osnovnih taktnih intervala
+
+29] Projektovati stazu podataka zasnovanu na reg polju 4x32 koje ima mogucnost citanja tri podatka i mogucnost postavljanja adresnih izlaza. Nacrtati semu staze podataka i prikazati upravljacku rec za slucaj kada se jedna operacija obavlja u jednom taktnom intervalu. Dodeliti kodove svim potrebnim elementima (reg, up sig. funk., ...) i specificirati sadrzaj upravljacke reci za: R0 < R2and(R3orR1), R2<ulaz, i jednu instrukciju koja izaziva hazard.
+
+30] Na raspolaganju je 10 cipvoa RAM memorije kapaciteta 64Kx8b. Na sistem sa 48bit adresnom magistralom i 16bit magistralom podataka povezati pet modula kapaciteta 64Kx16b koriscenjem metoda linearnog izbora cipa. Koliko je ovakvih modula moguce prikljuciti datim ogranicenjima?
+
+31] Nacrtaj semu i objasni izdvojen ulaz-izlaz
+
+32] Nacrtati i objasniti hijerarhijsku piramidu memorije
+
+33] Na sistem sa dvadesetobitnom adresnom mag. prilljuciti dva cipa ROM1 i ROM2 kapaciteta 2Kx8b, jedan cip EPROM1 $Kx8b, i jedan cip RAM1 8Kx8b. Na raspolaganju je dekoder 1 od 8 sa jednim aktivno visokim prikljuckom dozvole rada. Smestaj zapoceti od adrese 00000H i navesti u kojim podrucjima se nalaze pojedini moduli.
+
+34] Nacrtaj i objasni organizaciju procesne jedinice oko tri magistrale.
+
+35] Nacrtaj i objasni ulaz-izlaz preslikan an memoriju
+
+
+36] Neka jednoprocesorski sistem ima n U-I modula koji mogu biti potencijalni izvori prekida. Nacrtati semu koja koristi princip lancanja i objasniti vektorske prekide.
+
+37] Za protocne sisteme koji su prikazani na slici odredi za koliko se vremenskih jedinica na izlazu javlja prvi rez i koliki je vremenski interval potreban za generisanje svakog sledeceg rezultata.
+a)
+    >10|10|10|10>
+b)
+    >10|20|10|10>
+c)
+    >10|10|10|20>
+d)
+    >10|15|20|10>
+e)
+    >19|11|10|10>
+
+38] Projektovati registarsko polje 12x8 koje ima mogucnost citanja dva podatka istovremeno. Polje treba da ima mogucnost upisa jednog podatka. Prikazati strukturu polja i dati listu potrebnih komponenata.
+
+39] Projektovati stazu podataka zasnovanu na reg polju 12x8 koje ima mogucnost citanja dva podatka istovremeno. Moguc je upis jednog podatka. Staza podataka treba da sadrzi sledece funkc:
+mogucnost obavljanja 8 razlicitih elementarnih a-l operacija, mogucnost unosa podataka, mogucnost iznosenja podatka i mogucnost postavljanja adresnih izlaza. Nacrtati semu staze podataka i prikazati upravljacku rec za slucaj kada se jedna operacija obavlja u jednom taktnom intervalu. Dodeli kodove svim potrebnim elementima (reg, upr. sig, operac., ...) i specificirraj sadrzaj upravljacke reci za:
+R12 < R10 AND R9
+R3 < ulaz podatka
+R6 > izlaz podataka
+
+40] Nacrtati semu koija prikazuje kako je UI interfejs povezan na sistemsku magistarlu. Prvo navesti, a zatim objasniti 5 osnovnih grupa funkcija koje treba da obavi UI interfejs.
+
+41] Nacrtati seme i objasniti sta sve podrazumeva indeksiranje kao podvrsta adresiranja sa razmestajem.
+
+42] Dati semu koja prikazuje kako se interna magistrala koja je razdvojena na ulazni i izlaznu povezuje na magistralu podataka i objasniti tokove podataka prilikom operacija ulaz i izlaz.
