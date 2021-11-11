@@ -16,6 +16,8 @@ public:
     ~GenKeyb();
 
 private slots:
+    void onBtnClicked();
+    void onDispChanged(QString newValue);
 
 private:
     Ui::GenKeyb *ui;

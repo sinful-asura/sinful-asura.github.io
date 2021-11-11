@@ -10,8 +10,10 @@ public:
     explicit GenKeybLogic(QObject *parent = nullptr);
 
 signals:
-//    void dispChanged(QString value);
-//    void doCommand(QString character);
+    void dispChanged(QString);
+
+public slots:
+    void doCommand(QString);
 };
 
 #endif // GENKEYBLOGIC_H
