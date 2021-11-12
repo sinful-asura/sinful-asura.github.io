@@ -13,7 +13,7 @@ As you may have guessed from the name, this is the directory where all faculty-r
 
 ## CodeHeap
 
-This is just a folder to keep some files that may come in handy.
+This is just a folder to keep some files that may come in handy. 
 
 
 An example *(as of current contents)* would be the file **launch.json**.
