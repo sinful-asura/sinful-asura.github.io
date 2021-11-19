@@ -54,20 +54,24 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../ChessEditor/chessdoc.cpp \
 		../ChessEditor/chesssquare.cpp \
+		../ChessEditor/chesssquaredialog.cpp \
 		../ChessEditor/chessview.cpp \
 		../ChessEditor/main.cpp \
 		../ChessEditor/chesseditor.cpp qrc_images.cpp \
 		moc_chessdoc.cpp \
 		moc_chesseditor.cpp \
+		moc_chesssquaredialog.cpp \
 		moc_chessview.cpp
 OBJECTS       = chessdoc.o \
 		chesssquare.o \
+		chesssquaredialog.o \
 		chessview.o \
 		main.o \
 		chesseditor.o \
 		qrc_images.o \
 		moc_chessdoc.o \
 		moc_chesseditor.o \
+		moc_chesssquaredialog.o \
 		moc_chessview.o
 DIST          = /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/common/unix.conf \
@@ -323,8 +327,10 @@ DIST          = /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/spec_pr
 		../ChessEditor/ChessEditor.pro ../ChessEditor/chessdoc.h \
 		../ChessEditor/chesseditor.h \
 		../ChessEditor/chesssquare.h \
+		../ChessEditor/chesssquaredialog.h \
 		../ChessEditor/chessview.h ../ChessEditor/chessdoc.cpp \
 		../ChessEditor/chesssquare.cpp \
+		../ChessEditor/chesssquaredialog.cpp \
 		../ChessEditor/chessview.cpp \
 		../ChessEditor/main.cpp \
 		../ChessEditor/chesseditor.cpp
@@ -336,7 +342,7 @@ TARGET        = ChessEditor
 first: all
 ####### Build rules
 
-ChessEditor: ui_chesseditor.h $(OBJECTS)  
+ChessEditor: ui_chesseditor.h ui_chesssquaredialog.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../ChessEditor/ChessEditor.pro /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/linux-g++/qmake.conf /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -868,9 +874,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../ChessEditor/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChessEditor/chessdoc.h ../ChessEditor/chesseditor.h ../ChessEditor/chesssquare.h ../ChessEditor/chessview.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChessEditor/chessdoc.cpp ../ChessEditor/chesssquare.cpp ../ChessEditor/chessview.cpp ../ChessEditor/main.cpp ../ChessEditor/chesseditor.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChessEditor/chesseditor.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChessEditor/chessdoc.h ../ChessEditor/chesseditor.h ../ChessEditor/chesssquare.h ../ChessEditor/chesssquaredialog.h ../ChessEditor/chessview.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChessEditor/chessdoc.cpp ../ChessEditor/chesssquare.cpp ../ChessEditor/chesssquaredialog.cpp ../ChessEditor/chessview.cpp ../ChessEditor/main.cpp ../ChessEditor/chesseditor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChessEditor/chesseditor.ui ../ChessEditor/chesssquaredialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -910,9 +916,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -Wextra -dM -E -o moc_predefs.h /home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_chessdoc.cpp moc_chesseditor.cpp moc_chessview.cpp
+compiler_moc_header_make_all: moc_chessdoc.cpp moc_chesseditor.cpp moc_chesssquaredialog.cpp moc_chessview.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_chessdoc.cpp moc_chesseditor.cpp moc_chessview.cpp
+	-$(DEL_FILE) moc_chessdoc.cpp moc_chesseditor.cpp moc_chesssquaredialog.cpp moc_chessview.cpp
 moc_chessdoc.cpp: ../ChessEditor/chessdoc.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QObject \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobject.h \
@@ -982,6 +988,7 @@ moc_chessdoc.cpp: ../ChessEditor/chessdoc.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qproperty.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qshareddata.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpropertyprivate.h \
+		../ChessEditor/chesssquare.h \
 		moc_predefs.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc
 	/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc $(DEFINES) --include '/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/build-ChessEditor-Desktop_Qt_6_2_1_GCC_64bit-Debug/moc_predefs.h' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/linux-g++ -I'/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/ChessEditor' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore -I. -I/usr/include/c++/11.1.0 -I/usr/include/c++/11.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed -I/usr/include ../ChessEditor/chessdoc.h -o moc_chessdoc.cpp
@@ -1122,6 +1129,140 @@ moc_chesseditor.cpp: ../ChessEditor/chesseditor.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc
 	/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc $(DEFINES) --include '/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/build-ChessEditor-Desktop_Qt_6_2_1_GCC_64bit-Debug/moc_predefs.h' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/linux-g++ -I'/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/ChessEditor' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore -I. -I/usr/include/c++/11.1.0 -I/usr/include/c++/11.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed -I/usr/include ../ChessEditor/chesseditor.h -o moc_chesseditor.cpp
 
+moc_chesssquaredialog.cpp: ../ChessEditor/chesssquaredialog.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qconfig.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qlogging.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qflags.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobject.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstring.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qchar.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpair.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydataops.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qanystringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qlist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiterator.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcompare.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qscopeguard.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiterable.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmath.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qproperty.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmargins.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qrect.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsize.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpoint.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpalette.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qcolor.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qrgb.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qbrush.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qimage.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtransform.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qregion.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qline.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfont.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qcursor.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qbitmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qevent.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qurl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qvariant.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qhash.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdebug.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringconverter.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qset.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qeventpoint.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qvectornd.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qinputdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qscreen.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QList \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QObject \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QRect \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QSize \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QSizeF \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/QTransform \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnativeinterface.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qloggingcategory.h \
+		moc_predefs.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc
+	/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/moc $(DEFINES) --include '/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/build-ChessEditor-Desktop_Qt_6_2_1_GCC_64bit-Debug/moc_predefs.h' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/mkspecs/linux-g++ -I'/home/asura000/Projects/Personal/kilex00.github.io/Faculty of Electronic Engineering/[V] Object Oriented Design/Lab-2/ChessEditor' -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui -I/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore -I. -I/usr/include/c++/11.1.0 -I/usr/include/c++/11.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/11.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed -I/usr/include ../ChessEditor/chesssquaredialog.h -o moc_chesssquaredialog.cpp
+
 moc_chessview.cpp: ../ChessEditor/chessview.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QWidget \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qwidget.h \
@@ -1259,9 +1400,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_chesseditor.h
+compiler_uic_make_all: ui_chesseditor.h ui_chesssquaredialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_chesseditor.h
+	-$(DEL_FILE) ui_chesseditor.h ui_chesssquaredialog.h
 ui_chesseditor.h: ../ChessEditor/chesseditor.ui \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/uic \
 		../ChessEditor/chessview.h \
@@ -1395,6 +1536,10 @@ ui_chesseditor.h: ../ChessEditor/chesseditor.ui \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qloggingcategory.h
 	/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/uic ../ChessEditor/chesseditor.ui -o ui_chesseditor.h
 
+ui_chesssquaredialog.h: ../ChessEditor/chesssquaredialog.ui \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/uic
+	/home/asura000/Programs/Qt/6.2.1/gcc_64/libexec/uic ../ChessEditor/chesssquaredialog.ui -o ui_chesssquaredialog.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -1486,6 +1631,139 @@ chessdoc.o: ../ChessEditor/chessdoc.cpp ../ChessEditor/chessdoc.h \
 
 chesssquare.o: ../ChessEditor/chesssquare.cpp ../ChessEditor/chesssquare.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chesssquare.o ../ChessEditor/chesssquare.cpp
+
+chesssquaredialog.o: ../ChessEditor/chesssquaredialog.cpp ../ChessEditor/chesssquaredialog.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QDialog \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qglobal.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qconfig.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qlogging.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qflags.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobject.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstring.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qchar.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpair.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qarraydataops.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qanystringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qlist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiterator.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcompare.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qscopeguard.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiterable.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmath.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qproperty.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmargins.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qrect.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsize.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpoint.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpalette.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qcolor.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qrgb.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qbrush.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qimage.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtransform.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qregion.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qline.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfont.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qcursor.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qbitmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qevent.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qpointer.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qurl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qvariant.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qmap.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qhash.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdebug.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qstringconverter.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qset.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qeventpoint.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qvectornd.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qinputdevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qscreen.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QList \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QObject \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QRect \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QSize \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QSizeF \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/QTransform \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnativeinterface.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qloggingcategory.h \
+		ui_chesssquaredialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chesssquaredialog.o ../ChessEditor/chesssquaredialog.cpp
 
 chessview.o: ../ChessEditor/chessview.cpp ../ChessEditor/chessview.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QWidget \
@@ -1616,7 +1894,18 @@ chessview.o: ../ChessEditor/chessview.cpp ../ChessEditor/chessview.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/QTransform \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qnativeinterface.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qloggingcategory.h \
-		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QTextStream
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QTextStream \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpainter.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qtextoption.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qpen.h \
+		../ChessEditor/chessdoc.h \
+		../ChessEditor/chesssquare.h \
+		../ChessEditor/chesseditor.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QMainWindow \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chessview.o ../ChessEditor/chessview.cpp
 
 main.o: ../ChessEditor/main.cpp ../ChessEditor/chesseditor.h \
@@ -1942,9 +2231,20 @@ chesseditor.o: ../ChessEditor/chesseditor.cpp ../ChessEditor/chesseditor.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qmenubar.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QStatusBar \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		../ChessEditor/chessview.h \
 		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QWidget \
 		../ChessEditor/chesssquare.h \
-		../ChessEditor/chessdoc.h
+		../ChessEditor/chessdoc.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/QTextStream \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdir.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qfile.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qfileinfo.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qdatetime.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtCore/qcalendar.h \
+		/home/asura000/Programs/Qt/6.2.1/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chesseditor.o ../ChessEditor/chesseditor.cpp
 
 qrc_images.o: qrc_images.cpp 
@@ -1955,6 +2255,9 @@ moc_chessdoc.o: moc_chessdoc.cpp
 
 moc_chesseditor.o: moc_chesseditor.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chesseditor.o moc_chesseditor.cpp
+
+moc_chesssquaredialog.o: moc_chesssquaredialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chesssquaredialog.o moc_chesssquaredialog.cpp
 
 moc_chessview.o: moc_chessview.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chessview.o moc_chessview.cpp

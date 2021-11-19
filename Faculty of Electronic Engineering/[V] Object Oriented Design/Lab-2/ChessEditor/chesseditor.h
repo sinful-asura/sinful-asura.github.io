@@ -18,8 +18,11 @@ private:
     Ui::ChessEditor *ui;
 
 signals:
-    void startSave();
+    void loadTriggered(QString);
+    void saveTriggered(QString);
+    void doubleClick();
 private slots:
     void on_actionOpen_triggered();
+    void on_actionSave_triggered();
 };
 #endif // CHESSEDITOR_H

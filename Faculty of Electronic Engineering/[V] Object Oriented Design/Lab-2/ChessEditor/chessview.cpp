@@ -3,17 +3,18 @@
 #include <QPainter>
 #include "chessdoc.h"
 #include "chesseditor.h"
+#include <QMouseEvent>
+#include "chesssquaredialog.h"
 
 ChessDoc* doc = new ChessDoc();
+ChessSquareDialog* dlg;
 
 ChessView::ChessView(QWidget *parent) : QWidget(parent)
 {
-    QTextStream logger(stdout);
-    doc->load("chess_data.txt");
+    dlg = new ChessSquareDialog();
 }
 
 void ChessView::drawChessboard(QPainter *p){
-    QTextStream logger(stdout);
     QColor black(163, 108, 88);
     QColor white(238, 208, 170);
     QPixmap figures(":/figures/canvas.png");
@@ -62,7 +63,9 @@ void ChessView::drawChessboard(QPainter *p){
             character = QString::number(8-i);
             p->drawText((startPositionX - textSize - fontOffset), startPositionY + (i * squareSize) - fontOffset, textSize*2, textSize*2, 0, character);
         }
-
+        if(!doc->dataLoaded){
+           return;
+        }
         for(int j = 0; j<8; j++){
             for(int i = 0; i<8; i++){
                 //Draw figures
@@ -107,12 +110,46 @@ void ChessView::drawChessboard(QPainter *p){
 }
 
 void ChessView::paintEvent(QPaintEvent *e){
-    QTextStream logger(stdout);
     QPainter p(this);
     drawChessboard(&p);
 }
 
 ChessView::~ChessView(){
     delete doc;
+    delete dlg;
 }
 
+void ChessView::loadFile(QString path){
+    doc->load(path);
+    this->repaint();
+}
+
+void ChessView::saveFile(QString path){
+    if(!path.contains(".txt")){
+        path = path.trimmed() + ".txt";
+    }
+    doc->save(path);
+}
+
+
+void ChessView::mouseDoubleClickEvent(QMouseEvent *e){
+    QPoint position = e->pos();
+    int textSize = 25;
+    int squareSize = (this->height() - textSize * 2 - 1)/8;
+    //Space for rows
+    int startPositionX = (this->width() - 8*squareSize - 1)/2;
+    int startPositionY = (this->height() - 12 - 8*squareSize -1);
+    int row = (position.x() - startPositionX)/squareSize; // row works good
+    int col = (position.y() - startPositionY + textSize)/squareSize;
+    if((row>=0) && (row <=7) && (col>=0) && (col<=7)){
+            dlg->reset();
+            if(dlg->exec() == dlg->Accepted){
+                doc->dataLoaded = true;
+                doc->grid[col][row].figureColor = dlg->figureColor;
+                doc->grid[col][row].figureType = dlg->figureType;
+                doc->grid[col][row].isEmpty = dlg->isEmpty;
+                dlg->reset();
+                this->repaint();
+            }
+    }
+}

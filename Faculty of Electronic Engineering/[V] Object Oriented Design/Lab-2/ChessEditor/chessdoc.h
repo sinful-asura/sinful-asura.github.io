@@ -13,6 +13,7 @@ public:
     void load(QString);
     void save(QString);
     ChessSquare** grid;
+    bool dataLoaded;
 
 signals:
     void chessDataChanged();

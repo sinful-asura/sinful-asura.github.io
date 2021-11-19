@@ -26,7 +26,7 @@ class Ui_ChessEditor
 public:
     QAction *actionOpen;
     QAction *actionSave;
-    ChessView *centralwidget;
+    ChessView *chessView;
     QHBoxLayout *horizontalLayout;
     QMenuBar *menubar;
     QMenu *menuFILE;
@@ -47,11 +47,11 @@ public:
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSave->setIcon(icon1);
-        centralwidget = new ChessView(ChessEditor);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        horizontalLayout = new QHBoxLayout(centralwidget);
+        chessView = new ChessView(ChessEditor);
+        chessView->setObjectName(QString::fromUtf8("chessView"));
+        horizontalLayout = new QHBoxLayout(chessView);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        ChessEditor->setCentralWidget(centralwidget);
+        ChessEditor->setCentralWidget(chessView);
         menubar = new QMenuBar(ChessEditor);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 884, 23));

@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     chessdoc.cpp \
     chesssquare.cpp \
+    chesssquaredialog.cpp \
     chessview.cpp \
     main.cpp \
     chesseditor.cpp
@@ -19,10 +20,12 @@ HEADERS += \
     chessdoc.h \
     chesseditor.h \
     chesssquare.h \
+    chesssquaredialog.h \
     chessview.h
 
 FORMS += \
-    chesseditor.ui
+    chesseditor.ui \
+    chesssquaredialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

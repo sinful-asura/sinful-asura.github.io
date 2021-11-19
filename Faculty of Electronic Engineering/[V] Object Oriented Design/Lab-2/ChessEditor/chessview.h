@@ -12,7 +12,13 @@ public:
     void drawChessboard(QPainter*);
     void paintEvent(QPaintEvent *event);
 signals:
+    void doubleClicked();
 
+public slots:
+    void loadFile(QString);
+    void saveFile(QString);
+protected:
+    void mouseDoubleClickEvent(QMouseEvent *);
 };
 
 #endif // CHESSVIEW_H

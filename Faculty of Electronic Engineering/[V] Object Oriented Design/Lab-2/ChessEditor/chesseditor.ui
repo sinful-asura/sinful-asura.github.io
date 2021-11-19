@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>ChessEditor</string>
   </property>
-  <widget class="ChessView" name="centralwidget">
+  <widget class="ChessView" name="chessView">
    <layout class="QHBoxLayout" name="horizontalLayout"/>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -60,6 +60,10 @@
    <extends>QWidget</extends>
    <header>chessview.h</header>
    <container>1</container>
+   <slots>
+    <signal>doubleClick()</signal>
+    <slot>onDoubleClick()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>

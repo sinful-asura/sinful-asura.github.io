@@ -5,6 +5,8 @@
 
 ChessSquare** grid;
 
+bool dataLoaded = false;
+
 ChessDoc::ChessDoc(QObject *parent) : QObject(parent)
 {
     grid = new ChessSquare*[8];
@@ -96,7 +98,7 @@ void ChessDoc::load(QString file){
                     }
                     i++;
                 }
-
+    dataLoaded = true;
     emit chessDataChanged();
 }
 
