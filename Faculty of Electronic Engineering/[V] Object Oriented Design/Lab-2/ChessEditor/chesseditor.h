@@ -14,8 +14,12 @@ class ChessEditor : public QMainWindow
 public:
     ChessEditor(QWidget *parent = nullptr);
     ~ChessEditor();
-
 private:
     Ui::ChessEditor *ui;
+
+signals:
+    void startSave();
+private slots:
+    void on_actionOpen_triggered();
 };
 #endif // CHESSEDITOR_H

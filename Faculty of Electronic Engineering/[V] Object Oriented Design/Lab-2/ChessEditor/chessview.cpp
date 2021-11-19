@@ -2,6 +2,7 @@
 #include <QTextStream>
 #include <QPainter>
 #include "chessdoc.h"
+#include "chesseditor.h"
 
 ChessDoc* doc = new ChessDoc();
 
@@ -114,3 +115,4 @@ void ChessView::paintEvent(QPaintEvent *e){
 ChessView::~ChessView(){
     delete doc;
 }
+
