@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>open.png</file>
+        <file>save.png</file>
+        <file>canvas.png</file>
+    </qresource>
+</RCC>

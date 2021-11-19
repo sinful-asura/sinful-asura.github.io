@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>save.png</file>
+        <file>open.png</file>
+    </qresource>
+    <qresource prefix="/figures">
+        <file>canvas.png</file>
+    </qresource>
+</RCC>
