@@ -1,0 +1,47 @@
+Kada kazemo 'graf', bez ikakvog prefiksa, podrazumevamo da se radi o neorijentisanom grafu.
+
+Pseudograf - graf koji sadrzi paralelne grane i petlje.
+Multigraf - graf koji sadrzi paralelne grane, ali ne sadrzi petlje.
+Hipergraf - graf kod koga jedna grana moze da spoji vise cvorova
+
+Orijentisana grana Q, od a do b, se predstavlja na sledeci nacin:
+    Q = (a,b)
+Neorijentisana grana P, od a do b, se obelezava na sledeci(e) nacin(e):
+    P = {a,b}
+    P = {b,a}
+
+Posmatramo dva cvora u nekom grafu, xi, xj; Ukoliko su ova dva cora povezana granom, onda su oni 'susedni'.
+Takodje, dve grane su susedne ukoliko imaju jedan zajednicki cvor.
+
+Ako cvor cini pocetak ili kraj neke grane, onda za tu granu i taj cvor kazemo da su 'incidentni'.
+Kada posmatramo jedan cvor, skup svih njemu susdenih cvorova nazivamo 'zvezdom', a broj elemenata zvezde je stepen tog cvora.
+Cvor koji nema ni jedan susedni cvor se zove 'izolovani cvor'.
+
+Najveci stepen cvora, od ukupno n cvorova, moze biti n-1 (kada je cvor povezan sa svim ostalim cvorovima).
+Cvor koji ima najmanji stepen u nekom grafu se oznacava sa δ (malo delta), a cvor koji ima najveci stepen sa Δ (veliko delta).
+Srednji stepen grafa se dobija tako sto se saberu svi stepeni cvorova i podeli sa brojem cvorova.
+ 0 <= δ <= S <= Δ <= n-1.
+
+Ne-negativni niz stepena cvorova dobija se kada, recimo, u skupu D poredjamo stepene cvorova tog grafa, od najveceg ka najmanjem.
+Time dobijamo sledeci izraz:
+    D = { d1, d2, d3, ..., dn }
+
+Niz D, za koji vazi sledeca jednacina:
+    n-1 >= d1 >= d2 >= ... >= dn >= 0,
+naziva se 'pravilni niz'.
+
+Ako je niz D = {d1,d2,...,dn} pravilni niz, i D1={d2-1, d3-1, ..., d(d1+1)-1, d(d1+2), ..., dn} izveden iz njega,
+tada je niz D graficki akko je niz D1 graficki.
+
+Primer: D = {3, d2, d3, d4, d5, d6, d7}
+    D1 = {d2,-1, d3-1, d4-1, d5, d6, d7}
+
+2m = suma(i = [1,n])d(xi), gde je m broj grana.
+Razlog za to je jer se svaki cvor uzima dva puta u razmatranje te je zbog toga suma stepena cvorova = dvostrukom broju grana.
+Broj m je ceo broj.
+=> Broj cvorova neparnog stepena u grafu je paran broj.
+
+Ako su svi stepeni cvorova u nekom grafu jednaki, takav graf se naziva r-regularnim.
+Maksimalni stepen regularnosti je r=n-1 i takav graf se naziva kompletnim grafom (jedan cvor je povezan sa svim ostalim cvorovima).
+
+------ Kraj 1. casa
