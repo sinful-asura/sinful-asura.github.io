@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/src">
+        <file>canvas.png</file>
+    </qresource>
+</RCC>
