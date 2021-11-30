@@ -45,3 +45,49 @@ q => p - konverzija
 
 NI efektivno znaci NIJE I
 NILI efektivno znaci NIJE ILI
+
+Ako su A i B iskazne konstante, c - unarni veznik, d - binarni veznik, onda se iskazne formule formiraju na sledeci nacin:
+
+    cA           A d B
+
+Tautologija je UVEK tacna (ne postoji mogucnost da nekad bude tacna nekad netacna).
+Isto vazi i za kondtradikciju samo suportno.
+
+Tautologija - tacno.
+Kontradikcija - netacno.
+
+Omiljena pitanja za ispit:
+
+- Ako je A => B tacno, sta mozemo reci o istinitosti iskaznih formula za A i B?
+
+    Odgovor: Alternativa
+    Ako je A netacno, iskaz je uvek tacan, i ako su i A i B tacni, iskaz je takodje tacan.
+
+- Ako je A => B tautologija (kontradikcija), sta mozemo reci o istinitosti iskaznih formula za A i B?
+
+    Odgovor:
+        Tada je A uvek netacno ili B uvek tacno.
+
+Stirlingovi brojevi druge vrste S(n+1),k = Sn,(k-1) + kSn,k
+
+Ukupan broj razmestanja n razlicitih kuglica u k istovetnih kutija je:
+
+    Bn = SUM(k=[1,n]) {Sn,k}
+    Bn se zove belov broj
+
+Ako covek pozajmi novac, sta on postaje?
+- Duznik
+(wtf je ovo pitanje i odgovor)
+Ovo nije iskaz.
+
+Q: Sta je binarna relacija?
+A: Skup.
+
+Relacija x izmedju a i b se oznacava:
+    a x b
+    (a,b) <element> x
+
+Binarna relacija x na nepraznom skupu A je relacija ekvivalencije ako ispunjava 3 uslova:
+- Refleksivna je
+- Tranzitivna je
+- Simetricna je
