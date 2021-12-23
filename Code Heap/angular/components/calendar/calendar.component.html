@@ -1,0 +1,130 @@
+<div class="app-block">
+  <div class="block-content">
+    <div class="calendar">
+      <div class="calendar-header">
+        <button type="button" class="btn-prev" (click)="loadMonth('prev')"><i class="icon-arrow-left"></i></button>
+        <span class="clickable" (click)="displaySection = 'months'">{{ currDate.month }}</span>
+        <span class="clickable" (click)="displaySection = 'years'" [class.no-click]="displaySection == 'years'">{{ currDate.year }}</span>
+        <button type="button" class="btn-next" (click)="loadMonth('next')"><i class="icon-arrow-right"></i></button>
+      </div>
+      <div class="calendar-body" [ngSwitch]="displaySection">
+        <div *ngSwitchCase="'days'">
+          <div class="days-wrapper">
+            <div class="weekdays-row">
+              <div class="weekday-col" *ngFor="let weekday of days">
+                <div class="weekday">{{ weekday }}</div>
+              </div>
+            </div>
+            <div class="days-row" *ngFor="let week of generatedMonthlyDays; let i = index">
+              <div class="day-col" *ngFor="let day of week; let j = index" [class.selected]="day == selectedDate?.unix" [class.current]="day == +today && !disableDay(day, i)" [class.disabled]="disableDay(day, i)">
+                <div class="day" (click)="selectDay(day)">
+                  <div>{{ day | date: "d" }}</div>
+                  <div *ngIf=" (i == 0 && j == 3) || (i == 2 && j == 5) || +day == currDate.unix" class="dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngSwitchCase="'months'" class="months-wrapper">
+          <div *ngFor="let month of enum_month_names; let i = index" class="month" [class.selected]="month === currDate.month" (click)="changeMonth(i)">{{ month }}</div>
+        </div>
+        <div *ngSwitchCase="'years'" class="years-wrapper">
+          <div *ngFor="let year of year_selection_pool" class="year" [class.selected]="year === currDate.year" (click)="changeYear(year)">{{ year }}</div>
+        </div>
+      </div>
+      <div class="calendar-footer" *ngIf="showFooter">
+        <div class="data-wrapper">
+          <div class="time-and-pax"><i class="icon-clock"></i><span class="time">8:00 - 10:00</span><span class="pax">36 PAX</span></div>
+          <h3>Breakfast of TSV footbal players</h3>
+          <p>Nulla lacus ex, elementum vitae turpis suscipit, fringilla pretium felis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="app-block d-none">
+  <div class="header">
+    <i class="icon-arrow-left" (click)="loadMonth('prev')"></i>
+    <span class="month-year-field">
+      <span
+        class="clickable"
+        (click)="displaySection = 'months'"
+        *ngIf="displaySection == 'days'"
+      >
+        {{ currDate.month }}
+      </span>
+      <span
+        class="clickable"
+        (click)="displaySection = 'years'"
+        [class.no-click]="displaySection == 'years'"
+      >
+        {{ currDate.year }}
+      </span>
+    </span>
+    <i class="icon-arrow-right" (click)="loadMonth('next')"></i>
+  </div>
+  <div class="body" [ngSwitch]="displaySection">
+    <div *ngSwitchCase="'days'">
+      <div class="weekdays">
+        <div class="weekday-row">
+          <div class="weekday-card" *ngFor="let weekday of days">
+            {{ weekday }}
+          </div>
+        </div>
+        <div
+          class="date-row"
+          *ngFor="let week of generatedMonthlyDays; let i = index"
+        >
+          <div
+            class="card-select date"
+            *ngFor="let day of week; let j = index"
+            [class.selected]="day == selectedDate?.unix"
+            [class.current]="day == original_date?.unix && !disableDay(day, i)"
+            [class.disabled]="disableDay(day, i)"
+          >
+            <div class="selected-day" (click)="selectDay(day)">
+              <div>{{ day | date: "d" }}</div>
+              <div
+                *ngIf="
+                  (i == 0 && j == 3) ||
+                  (i == 2 && j == 5) ||
+                  +day == currDate.unix
+                "
+                class="blue-dot"
+              >
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'months'" class="month-select">
+      <div
+        *ngFor="let month of enum_month_names; let i = index"
+        class="month-entry"
+        [class.selected]="month === currDate.month"
+        (click)="changeMonth(i)"
+      >
+        {{ month }}
+      </div>
+    </div>
+    <div *ngSwitchCase="'years'" class="year-select">
+      <div
+        *ngFor="let year of year_selection_pool"
+        class="month-entry"
+        [class.selected]="year === currDate.year"
+        (click)="changeYear(year)"
+      >
+        {{ year }}
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-content" *ngIf="showFooter">
+      <span>Footer content placeholder</span>
+    </div>
+  </div>
+</div>
