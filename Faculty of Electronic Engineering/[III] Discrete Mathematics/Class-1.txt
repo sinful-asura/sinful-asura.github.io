@@ -1,0 +1,93 @@
+Iskaz je osnova matematicke logike i on se ne definise.
+Iskazi se takodje nazivaju i 'iskazne promenljive'.
+Najcesce se oznacavaju malim slovima.
+
+Razlog izucavanja dvoznacne logike, i pored toga sto nije idealna za svakodnevni zivot, predstavlja nauka racunarstva zasnivana na boolovoj algebri.
+
+Postoje dve iskazne konstante - apsolutno istinita (T) i apsolutno neistinita (obrnuto T), ili sa 1 i 0.
+
+Funkcija istinitosti predstavlja svako preslikavanje koje slika skup S = { p,q,r,s,... } u skup { 0, 1 }.
+
+0 - neistinito
+1 - istinito.
+
+Da bi se formirao neki iskaz, potrebni su veznici i postoje 2 tipa veznika:
+- unarni ( negacija )
+- binarni ( i, ili, ekvivalencija, implikacija, ekskluzivno ili, ni, nili ...)
+
+
+p * q - konjunkcija
+p + q - disjunkcija
+
+~(p+q) = ~p * ~q
+~(p * q) = ~p + ~q
+
+- Disjunkcija se ne poklapa sa 'ili' u realnom zivotu.
+P(1) + Q(1) => 1
+"Ja sam ili u Nisu ili u Beogradu" ce biti tacno samo ako vazi jedan od dva slucajeva u realnom zivotu.
+Medjutim, kod disjunkcije, nemoguce je biti istovremeno i u Nisu i u Beogradu, a to se podrazumeva tacnim u tom slucaju.
+Ovde vazi operacija ekskluzivno ili (xor), (sabiranje po modulu 2)
+
+EXOR je 'ili' iz obicnog zivota.
+
+Implikacija, p => q, je netacna samo kada iz p(1) => q(0).
+Implikacija se cita 'ako - onda'.
+
+p => q === ~p + q
+
+q => p - konverzija
+~p => ~q - inverzija
+~q => ~p => kontrapozicija
+
+(p => q) * (q => p) === (p <=> q)
+
+~(p <=> q) === p EXOR q
+
+NI efektivno znaci NIJE I
+NILI efektivno znaci NIJE ILI
+
+Ako su A i B iskazne konstante, c - unarni veznik, d - binarni veznik, onda se iskazne formule formiraju na sledeci nacin:
+
+    cA           A d B
+
+Tautologija je UVEK tacna (ne postoji mogucnost da nekad bude tacna nekad netacna).
+Isto vazi i za kondtradikciju samo suportno.
+
+Tautologija - tacno.
+Kontradikcija - netacno.
+
+Omiljena pitanja za ispit:
+
+- Ako je A => B tacno, sta mozemo reci o istinitosti iskaznih formula za A i B?
+
+    Odgovor: Alternativa
+    Ako je A netacno, iskaz je uvek tacan, i ako su i A i B tacni, iskaz je takodje tacan.
+
+- Ako je A => B tautologija (kontradikcija), sta mozemo reci o istinitosti iskaznih formula za A i B?
+
+    Odgovor:
+        Tada je A uvek netacno ili B uvek tacno.
+
+Stirlingovi brojevi druge vrste S(n+1),k = Sn,(k-1) + kSn,k
+
+Ukupan broj razmestanja n razlicitih kuglica u k istovetnih kutija je:
+
+    Bn = SUM(k=[1,n]) {Sn,k}
+    Bn se zove belov broj
+
+Ako covek pozajmi novac, sta on postaje?
+- Duznik
+(wtf je ovo pitanje i odgovor)
+Ovo nije iskaz.
+
+Q: Sta je binarna relacija?
+A: Skup.
+
+Relacija x izmedju a i b se oznacava:
+    a x b
+    (a,b) <element> x
+
+Binarna relacija x na nepraznom skupu A je relacija ekvivalencije ako ispunjava 3 uslova:
+- Refleksivna je
+- Tranzitivna je
+- Simetricna je
