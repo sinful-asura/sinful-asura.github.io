@@ -30,6 +30,11 @@ type AuthRefreshResponse = {
  * * Configure AuthRefreshRequest and AuthRefreshResponse types for this interceptor to work properly.
  * ! Don't forget to add interceptor to your module providers!
  * @requires providers: [..., {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
+ * 
+ * ! This interceptor relies on two parameters in sessionStorage;
+ * @param access_token
+ * @param refresh_token
+ * ! Be sure to add these to your 
  */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
