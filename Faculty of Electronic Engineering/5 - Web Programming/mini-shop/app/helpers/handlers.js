@@ -2,39 +2,31 @@ import { ROOT_TAG_NAME, ROUTES } from './constants.js';
 
 export class Router {
     routeChanged = new Event('route-changed');
-    constructor() {
-        document.addEventListener('change-route', (e) => {
-            this.changeRoute(e.detail.targetRoute);
-            console.info(`%c[Route Changed] %c> %c${e.detail.targetRoute}%c`,'color: #0076e3', 'color: white', 'color: red', 'color: white')
+    constructor(){
+        this.setupEvents();
+    }
+
+    setupEvents() {
+        document.addEventListener('change-route', e => {
+            window.history.pushState({}, "", e.detail.targetRoute);
+            this.handleLocation();
+        })
+
+        window.addEventListener('popstate', (e) => {
+            console.log(e);
+            this.handleLocation();
         })
     }
 
-    init() {
-        for(const route of ROUTES){
-           this.mapRouteToLocation(route)
-        }
-    }
-
-    mapRouteToLocation(route){
-        const currentRoute = window.location.pathname;
-        if(route.path !== currentRoute) return;
-        this.changeRoute(route.path);
-    }
-
-    handleRoute(template) {
-        const root = document.querySelector(ROOT_TAG_NAME);
-        root.innerHTML = template;
-        document.dispatchEvent(this.routeChanged);
-    }
-
-    async changeRoute(route) {
-        const target = ROUTES.find(r => r.path === route);
-        if(!target) return;
-        await fetch(`/components/${target.component}.component.html`)
-        .then(res => res.text())
+    async handleLocation() {
+        const path = window.location.pathname;
+        const route = ROUTES[path] || ROUTES[404];
+        await fetch(route)
+        .then((res) => res.text())
         .then(res => {
-            this.handleRoute(res)
-            window.history.pushState({}, "", target.path)
+            const root = document.querySelector(ROOT_TAG_NAME);
+            root.innerHTML = res;
+            document.dispatchEvent(this.routeChanged);
         })
     }
 }

@@ -1,4 +1,4 @@
-import { Router } from "../../helpers/handlers.js";
+import { Router } from "/helpers/handlers.js";
 import { ApplicationWizzard } from "./models.js";
 
 const wizzard = new ApplicationWizzard();
@@ -38,5 +38,4 @@ document.addEventListener("route-changed", () => {
 });
 
 wizzard.bootstrap();
-
-router.init();
+router.handleLocation();

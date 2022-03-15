@@ -17,15 +17,3 @@ export class ApplicationWizzard {
         document.dispatchEvent(this.init);
     }
 }
-
-export class RouteConfig {
-    path = '';
-    component = '';
-    constructor({
-        path = '',
-        component = ''
-    }) {
-        this.path = path;
-        this.component = component;
-    }
-}
