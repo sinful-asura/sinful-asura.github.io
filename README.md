@@ -1,7 +1,8 @@
 
-# Welcome To KileX00's Personal Repository
+# Welcome To The Void!
 
-This is my the repository where I keep most of the personal work that I do. You may be able to find all sorts of things here, so be prepared for that as well.
+This is my the repository where I keep useful things that I find / do. 
+You may be able to find all sorts of things here, so be prepared for that as well.
 
 If you're interested in a specific section/content, here's a quick summary, or *navigation*, if you perfer it that way.
 
