@@ -23,6 +23,6 @@
 
  AoT Compilation reduces processing burden for the client machine by compiling *Angular* code to *Javascript* code **Ahead of Time**.
 
- The default Angular behavior is to use JiT compiler, where the entire compiler gets loaded with the app and compiles Angular to Javascript as needed (Just in Time).
- Production should be built with **--prod** flag in order to utilize AoT compiler.
+ The default Angular behavior (in development mode) is to use JiT compiler, where the entire compiler gets loaded with the app and compiles Angular to Javascript as needed (Just in Time).
 
+In order to check out how fast the app will really be, we can use AoT to force the angular to run in 'production' mode while still in development, however this is not really an optimization tactic - it's just an insight into what can be refactored to run better.
