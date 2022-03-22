@@ -1,0 +1,55 @@
+body
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.prodavnicaDiv
+{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    min-height: 200px;
+}
+
+.naslov
+{
+    font-size:20px;
+    font-weight: bold;
+    align-self:center;
+}
+
+.prikazDiv
+{
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 400px;
+    align-content: space-around;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.meniKontejner
+{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    flex: 0 1 200px;
+    margin-right: 5px ;
+}
+
+.korpaKontejner
+{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    flex: 0 1 200px;
+    border-radius: 10px;
+    margin-left: 5px;
+}

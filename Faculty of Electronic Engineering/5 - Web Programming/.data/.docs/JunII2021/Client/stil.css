@@ -1,0 +1,59 @@
+.glavniKontejner
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.meniKontejner
+{
+    display:flex;
+    flex-direction: column;
+    flex: 0 0 200px;
+    margin-right: 50px;
+}
+
+.tabela
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabelaDiv
+{
+    
+}
+
+th,tr,td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 80px;
+    height: 40px;
+   
+}
+
+.redMenija
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rokoviDiv
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.rokoviKontejner
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.blokLabela
+{
+    display: block;
+}

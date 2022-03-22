@@ -1,0 +1,83 @@
+@media screen and (max-width:600px){
+    .glavniKontejner
+    {
+        flex-wrap:wrap;
+    }
+}
+
+.glavniKontejner
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.ceoPrikaz
+{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 200px;
+    margin: 10px;
+    align-content: center;
+    
+}
+
+.meniDiv
+{
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 200px;
+    margin: 10px;
+}
+
+.meracDiv
+{
+    display: flex;
+    flex-direction: row;
+    flex: 0 1 100px;
+    align-self: center;
+    align-items: flex-end;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.podeociDiv
+{
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 0 1 50px;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.podeok
+{
+    display: flex;
+    border-top: 1px solid black;
+    align-content: flex-end;
+    height: 100%;
+    flex-grow: 1;
+    width: 25px;
+}
+
+.skalaDiv
+{
+    display: flex;
+    flex-direction:column-reverse;
+    height: 100%;
+}
+
+.skala
+{
+    border: 1px solid black;
+    width: 25px;
+}
+
+.naslov
+{
+    align-self: center;
+    display: block;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+}

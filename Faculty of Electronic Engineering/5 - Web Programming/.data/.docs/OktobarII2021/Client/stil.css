@@ -1,0 +1,62 @@
+.prodavnicaKontejner
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.naslov
+{
+    display: block;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prikazKontejner
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+
+.meniKontejner
+{
+    display:flex;
+    flex-direction: column;
+    flex: 0 0 230px;
+}
+
+tr,td,table,thead,tbody
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.manjiNaslov
+{
+    display: block;
+    font-size: 15px;
+}
+
+.red
+{
+    display: flex;
+}
+
+.izmenaDiv
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.tabelaDiv
+{
+    
+}
+
+.korpa
+{
+    display: flex;
+    flex-direction: column;
+}

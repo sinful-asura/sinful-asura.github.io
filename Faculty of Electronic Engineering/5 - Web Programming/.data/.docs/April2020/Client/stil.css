@@ -1,0 +1,88 @@
+.polica
+{
+    border: 1px solid black;
+    justify-content: flex-start;
+    height: 75px;
+    margin: 5px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    padding: 0px;
+
+}
+
+.disk
+{
+    display:flex;
+    border: 1px solid black;
+    background-color: gray;
+    display: inline;
+    align-self: flex-start;
+    height: 75px;
+}
+
+.klub
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.naziv
+{
+    font-size: 25px;
+    font-weight: bold;
+    align-self: flex-start;
+    display: block;
+}
+
+.prikaz
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.meni
+{
+    display: flex;
+    flex-direction: column;
+    flex:0 1 150px;
+}
+
+.prikazPolica
+{
+    display:flex;
+    flex-direction: row;
+    flex: 1 1 500px;
+    margin-left:50px;
+}
+
+.policeDiv
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex:1 1 500px;
+}
+
+.policaRed
+{
+    display:flex;
+    flex-direction: row;
+}
+
+.oznaka
+{
+    display:flex;
+    flex: 1 1 200px;
+    align-items:center;
+}
+
+
+.br
+{
+    display:flex;
+    flex: 1 1 50px;
+    align-items:center;
+}

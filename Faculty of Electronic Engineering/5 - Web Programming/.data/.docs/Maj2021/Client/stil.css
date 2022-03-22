@@ -1,0 +1,86 @@
+.prikaz
+{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+}
+
+.prikazSilosa
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.naslov
+{
+    font-size: large;
+    font-style: normal;
+    align-self: center;
+}
+
+.naslovDiv
+{
+    display: flex;
+    align-items: center;
+    justify-self: normal;
+    align-content: center;
+    align-self: center;
+}
+
+.silosiDiv
+{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    width: 100%;
+}
+
+.meni
+{
+    flex: 0 0 200px;
+    flex-direction: column;
+    background-color: bisque;
+}
+
+.pomocniDiv
+{
+    width:200px;
+    display: block;
+    align-content: space-between;
+    width: 100%;
+}
+
+.dugme
+{
+    width: 100%;
+}
+
+.silos
+{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 50px;
+    height: 200px;
+    border: 1px solid black;
+    align-self: stretch;
+}
+
+.sadrzaj
+{
+    background-color: blue;
+}
+
+.stub
+{
+    width: 100%;
+}
+
+.labela
+{
+    display: block;
+    align-self: center;
+    align-content: center;
+}
