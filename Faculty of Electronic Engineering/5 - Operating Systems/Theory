@@ -1,0 +1,82 @@
+Arhitekture sistema mogu biti
+- Mikrokernel
+- Monolitna
+- Modularna
+
+- Linux tezi mikrokernel arhitekturi
+
+- Proces je osnovna jedinica izvrsenja svakog operativnog sistema, i svaki proces moze stvarati nove procese ili deliti posao na sitnije jedinice izvrsenja kao sto su Niti (Threadovi).
+
+Svaki proces poseduje PCB (Process Control Block) koji predstavlja licnu kartu procesa i sadrzi informacije o podacima i fajlovima sa kojima se radi, sadrzaju registara, korisnicki (User) stack i sistemski (Kernel) stack.
+
+PCB Sadrzi:
+- Identifikator
+- Stanje
+- Prioritet
+- Vrednost programsko brojaca (PC)
+- Pokazivac na memoriju u koju je smesten proces
+- Kontekstni podaci (sadrzaj registara procesora)
+- Informacije u Ulazno-Izlaznom statusu
+- Koje datoteke je otvorio
+
+Proces sa pet stanja:
+- Kreiran
+- Spreman
+- Izvrsava se
+- Zaustavljen
+- Zavrsen
+  
+Dva dodatna stanja (7-state model) 
+- Blokiran / Suspendovan
+- Spreman / Suspendovan
+
+Prebacuje se u Swap (Linux) / Pagefile (Windows)
+
+Za svaki PCB, sistem kreira nove zasebne tabele za sve dogadjaje koji se desavaju - primer:
+- Memorijske tabele
+- I/O tabele
+- Fajl tabele
+- Tabele procesa (child procesi)
+
+> Atributi procesa
+Informacije u okviru procesa se mogu grupisati u tri kategorije
+- Identifikatori procesa
+  - Svakom procesu je dodeljen jedinstveni ID (Process ID === PID)
+  - Moze posedovati identifikatore roditeljsko procesa, grupe procesa korisnika koji je kreirao proces itd.
+  - Sve druge tabele kojima upravlja OS mogu da koriste identifikator procesa da bi cross-referencirale PCB procesa.
+- Informacije o stanju procesora
+  - Sadrzaji registara procesora
+    - Registri opste namene vidljivi od strane korisnika
+    - Upravljacki i statusni registri (PC, uslovni kodovi, flagovi za dozvoljen/nedozvoljen prekid, mod izvrsenja)
+    - Stack pointeri - LIFO strukture za smestanje parametara, povratnih adresa i lokalnih promenljivih pri pozivima procedura i sistemskim pozivima
+  - PSW (Program Status Word)
+    - Sadrzi statusne informacije
+      - Primer: 
+      - EFLAGS registar na Pentium procesorima
+      - Itanium (IA-64) - psr registar ima polje od 2 bita: cpl (0 najvise privilegija, 3 najmanje privilegija)
+- Informacije za upravljanje procesom
+  - Informacije o stanju i planiranju (scheduling)
+    - Stanje procesa
+    - Prioritet
+    - Informacije vezane za planiranje - zavisno od algoritma planiranja
+    - Dogadjaj na koji proces ceka
+  - Struktuiranje (povezivanje / ulancavanje) PCB-a
+    - Procesi (PCB) su povezani u razlicitim strukturama (redovima, listama, itd.): roditelj-dete, red cekanja na U/I, itd.
+  - Medjuprocesna komunikacija
+    - Razliciti flag-ovi, signali, prouke izmedju procesa
+  - Privilegije procesa
+    - Privilegije za pristup memoriji, izvrsenje odredjenih tipova instrukcija, sistemskih servisa
+  - Upravljanje memorijom
+    - Pokazivaci (adrese) na tabele stranica/segmenata koje opisuju virtuelnu memoriju dodeljenu procesu
+  - Vlasnistvo i koriscenje resursa
+    - Resursi kojima upravlja proces, poput otvorenih datoteka
+    - Takodje moze biti ukljucena i istorija koriscenja procesora ili ostalih resursa za potrebe planiranja procesa
+ 
+Vecina procesora podrzava najmanje dva moda izvrsavanja
+- Korisnicki (user) mode
+  - Rezim izvrsavanja sa manje privilegija - zabranjen pristup svim memorijskim adresama i izvrsavanje privilegovanih (U/I) instrukcija
+  - Korisnicki programi se izvrsavaju u ovom rezimu
+- Kernel (system, suprevisor) mode - core mode
+  - Privilegovan rezim izvrsavanja
+  - U ovom rezimu se izvrsava kernel operativnog sistema
+  - Bit(-ovi) u PSW oznacavaju trenutni rezim izvrsenja
