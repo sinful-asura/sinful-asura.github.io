@@ -22,8 +22,8 @@
     "paths": {
       "*": [
         "src/app/*",
-        "src/environments/*",
         "src/assets/*",
+        "src/environments/*",
         "*"
       ],
     },
